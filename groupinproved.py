@@ -6,7 +6,7 @@ import math
 
 # Set stopping time and step length: 
 
-Nstep = 1000
+Nstep = 2000
 h     = 0.05
 
 # Parameters of initial conditions for x,y values in blue: 
@@ -23,14 +23,14 @@ y0_max=0.1
 
 Num_of_blue_lines_squared=6
 
-# Initial conditons for single particle path in red: 
+# Initial conditions for single particle path in red: 
 
-x0=-0.1
-y0=0.2
+x0=0.1
+y0=-0.05
 
 # Different h values for comparason in Figure 3
 
-h2=[0.005,0.01,0.1,0.2,0.3]  
+h2=[0.005,0.01,0.1,0.2,1]  
 
 # Set figure axis for figures 1,4,5:        (Figures 2,3 are auto)
 
@@ -47,7 +47,8 @@ chaos='off'
 # Creates two arrays of equally spaced points, used for plotting flow lines:
 
 listx=np.linspace(x0_min,x0_max,Num_of_blue_lines_squared) 
-listy=np.linspace(y0_min,y0_max,Num_of_blue_lines_squared) 
+listy=np.linspace(y0_min,y0_max,Num_of_blue_lines_squared)  
+        
 
 # Define function to compute velocity field:
 
@@ -124,22 +125,24 @@ def loop(x0,y0,h):
     
     return x,y
 
-
 ##############################GRAPHING########################################
 
 # Fig1() is a plot of the blue flow lines using different initial conditions
-    
+# Stops division by zero at (0,0)
+# Plots using a 2x2 grid of initial conditions around (0,0) 
+  
 def fig1(): 
     fig1=plt.figure 
     for i in listx: 
         for j in listy: 
-            x,y=loop(i,j,h) 
-            plt.plot(x,y,'b') 
+            if not i==j==0:
+                x,y=loop(i,j,h) 
+                plt.plot(x,y,'b') 
     plt.xlabel('x') 
     plt.ylabel('y') 
     plt.grid() 
     plt.axis(Figure_1_4_5_Axis) 
-    plt.title('Flow lines with varying initial conditions')
+    plt.title('Figure 1 : Flow lines with varying initial conditions')
     return fig1 
 
 # Fig2() is a plot of a single particle path in red using initial conditions
@@ -152,8 +155,7 @@ def fig2():
     plt.xlabel('x') 
     plt.ylabel('y') 
     plt.grid() 
-    #plt.axis([-1,2,-1,2])
-    plt.title('Flow of idividual particle starting at ({},{})'.format(x0,y0))
+    plt.title('Figure 2 : Flow of idividual particle starting at ({},{})'.format(x0,y0))
     return fig2 
 
 # Fig3() is a plot comparing different particle paths depending on different 
@@ -170,7 +172,7 @@ def fig3():
     plt.ylabel('y') 
     plt.grid() 
     plt.legend() 
-    plt.title('How chaging h changes the solution')
+    plt.title('Figure 3 : How chaging h changes the solution')
     return fig3 
 
 # Figcomb1() is a combination of fig1 and fig2
@@ -181,10 +183,11 @@ def figcomb1():
     x,y=loop(x0,y0,h)    
     plt.plot(x,y,'r',label='Trajectory of particle starting at ({},{})'.format(x0,y0)) 
     plt.legend() 
+    plt.title('Figure 4 : Flow of idividual particle starting at ({},{})'.format(x0,y0))
     return figcomb1 
 
 # Figcomb2() is a combination of fig1 and fig3
- 
+
 def figcomb2(): 
     figcomb2=plt.figure() 
     fig1() 
@@ -194,6 +197,7 @@ def figcomb2():
        x,y=loop(x0,y0,i) 
        plt.plot(x,y,colour[j],label='h={}'.format(i)) 
     plt.legend() 
+    plt.title('Figure 5 : Flow of idividual particle starting at ({},{})'.format(x0,y0))
     return figcomb2 
 
 
@@ -206,6 +210,20 @@ figcomb1()
 figcomb2() 
 
 #########################NOTES################################################
+# print('Cordinates (x,y) of inital conditions used for flow lines:')
+# print()
+# for i in listx:
+#     i=round(i,2)
+#     for j in listy:
+#         j=round(j,2)
+#         print('({},{})'.format(i,j), end=' ')
+#     print()
+
+
+
+
+# print('Array of initial x/y cordinates:')
+# print(listx)
 
 #Results: lowerleft:(0,0) 
 
