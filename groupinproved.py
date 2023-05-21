@@ -6,35 +6,35 @@ import math
 
 # Set stopping time and step length: 
 
-Nstep = 2000
+Nstep = 5000
 h     = 0.05
 
-# Parameters of initial conditions for x,y values in blue: 
+# Parameters for the mesh grid used to plot multiple particle paths in Fig1 
 # Flow travels away from (0,0) so recomended initial conditions
-# are (0,0) +- 0.1
+# are (0,0) +- 0.05
 
-x0_min=-0.1
-x0_max=0.1
+x0_min = -0.05
+x0_max = 0.05
 
-y0_min=-0.1
-y0_max=0.1
+y0_min = -0.05
+y0_max = 0.05
 
 # Choose how many blue flow lines (squared) are calculated:
 
-Num_of_blue_lines_squared=6
+Num_of_blue_lines_squared=5
 
 # Initial conditions for single particle path in red: 
 
-x0=0.1
-y0=-0.05
+x0=-0.2
+y0=0
 
 # Different h values for comparason in Figure 3
 
-h2=[0.005,0.01,0.1,0.2,1]  
+h2=[0.005,0.01,0.1,0.2,0.3,0.5,1]  
 
 # Set figure axis for figures 1,4,5:        (Figures 2,3 are auto)
 
-Figure_1_4_5_Axis = [-3,3,-1.2,4]
+Figure_1_4_5_Axis = [-5,5,-5,10]
 
 #Toggle if you want to see chaos like behavoir from (1,0):
 
@@ -48,7 +48,7 @@ chaos='off'
 
 listx=np.linspace(x0_min,x0_max,Num_of_blue_lines_squared) 
 listy=np.linspace(y0_min,y0_max,Num_of_blue_lines_squared)  
-        
+
 
 # Define function to compute velocity field:
 
@@ -132,7 +132,7 @@ def loop(x0,y0,h):
 # Plots using a 2x2 grid of initial conditions around (0,0) 
   
 def fig1(): 
-    fig1=plt.figure 
+    fig1=plt.figure()
     for i in listx: 
         for j in listy: 
             if not i==j==0:
@@ -142,7 +142,8 @@ def fig1():
     plt.ylabel('y') 
     plt.grid() 
     plt.axis(Figure_1_4_5_Axis) 
-    plt.title('Figure 1 : Flow lines with varying initial conditions')
+    plt.title('Streamlines of flow')
+    plt.savefig("Flow.pdf", bbox_inches='tight')
     return fig1 
 
 # Fig2() is a plot of a single particle path in red using initial conditions
@@ -155,6 +156,7 @@ def fig2():
     plt.xlabel('x') 
     plt.ylabel('y') 
     plt.grid() 
+    plt.axis([-3,3,-2,3])
     plt.title('Figure 2 : Flow of idividual particle starting at ({},{})'.format(x0,y0))
     return fig2 
 
@@ -168,11 +170,13 @@ def fig3():
     for i,j in zip(h2,L): 
         x,y=loop(x0,y0,i) 
         plt.plot(x,y,colour[j],label='h={}'.format(i)) 
-    plt.xlabel('x') 
-    plt.ylabel('y') 
+    #plt.xlabel('x') 
+    #plt.ylabel('y') 
     plt.grid() 
     plt.legend() 
-    plt.title('Figure 3 : How chaging h changes the solution')
+    plt.axis([1.8,2.05,0.4,1.4])
+    #plt.title('Plot of different h values for x0=-0.1, y0=0.2')
+    fig3.savefig("Hvaules3new2.pdf", bbox_inches='tight')
     return fig3 
 
 # Figcomb1() is a combination of fig1 and fig2
@@ -183,7 +187,7 @@ def figcomb1():
     x,y=loop(x0,y0,h)    
     plt.plot(x,y,'r',label='Trajectory of particle starting at ({},{})'.format(x0,y0)) 
     plt.legend() 
-    plt.title('Figure 4 : Flow of idividual particle starting at ({},{})'.format(x0,y0))
+    #plt.title('Flow of source independent of others')
     return figcomb1 
 
 # Figcomb2() is a combination of fig1 and fig3
@@ -201,32 +205,109 @@ def figcomb2():
     return figcomb2 
 
 
+
+
 ####################TOGGLE GRAPHS AS REQUIRED#################################
 
-fig1() 
-fig2() 
-fig3() 
+#fig1() 
+#fig2() 
+#fig3() 
 figcomb1() 
-figcomb2() 
-
-#########################NOTES################################################
-# print('Cordinates (x,y) of inital conditions used for flow lines:')
-# print()
-# for i in listx:
-#     i=round(i,2)
-#     for j in listy:
-#         j=round(j,2)
-#         print('({},{})'.format(i,j), end=' ')
-#     print()
+#figcomb2() 
 
 
+##################EXTRA STUFF###########################################
 
 
-# print('Array of initial x/y cordinates:')
-# print(listx)
+def figexact1():
+    figexact1=plt.figure()
+    a_values = np.linspace(-5, 5, 10)
 
-#Results: lowerleft:(0,0) 
+    # Create a meshgrid for x and y values
+    x = np.linspace(-10, 10, 1000)
+    y = np.linspace(-10, 10, 1000)
+    X, Y = np.meshgrid(x, y)
 
-#lowerright: (1,0) 
+    # Iterate through each value of a and plot the equation
+    for a in a_values:
+        Z = np.log(np.abs(X)) - np.sqrt(3) * np.arctan(Y / X) + 0.5 * np.log((Y**2/X**2)+1)-a
+        
+        plt.contour(X, Y, Z, levels=[0])
+    
+    plt.grid()
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.axis([-3,3,-2,3])
+    plt.title('Exact solution for (0,0)')
+    return figexact1
+    
+    
+def figexact2():
+    figexact2=plt.figure()
+    a_values = np.linspace(-20, 20, 12)
 
-#uppermiddle:(0.5,root(3)/2) 
+    x = np.linspace(-10, 10, 1000)
+    y = np.linspace(-10, 10, 1000)
+    X, Y = np.meshgrid(x, y)
+
+    for a in a_values:
+        a1 = np.sqrt(3)*Y+X-1
+        a2 = np.sqrt(3)*(X-1)-Y
+        Z = 6*np.sqrt(3) * np.arctan(a1/a2) - 3*np.log(np.abs(0.25*(Y**2/(X-1)**2+1))) - 6*np.log(np.abs(X-1))-a
+        plt.contour(X, Y, Z, levels=[0])
+    
+    plt.grid()
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.axis([-3,3,-2,3])
+    plt.title('Exact solution for (1,0)')
+    return figexact2
+  
+def figexact3():
+    figexact3=plt.figure()
+    a_values = np.linspace(-1, 0, 6)
+
+    x = np.linspace(-10, 10, 1000)
+    y = np.linspace(-10, 10, 1000)
+    X, Y = np.meshgrid(x, y)
+
+    for a in a_values:
+        Z = X**2+Y**2-np.sqrt(3)*Y-X-a
+        plt.contour(X, Y, Z, levels=[0])
+    
+    plt.grid()
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.axis([-3,3,-2,3])
+    plt.title('Exact solution for (0.5,0.866)')
+    return figexact3
+    
+    
+def figcomb3():
+    figcomb3=plt.figure()
+    fig1()
+    a_values = np.linspace(-5, 5, 10)
+
+    x = np.linspace(-10, 10, 1000)
+    y = np.linspace(-10, 10, 1000)
+    X, Y = np.meshgrid(x, y)
+
+    for a in a_values:
+        Z = np.log(np.abs(X)) - np.sqrt(3) * np.arctan(Y / X) + 0.5 * np.log((Y**2/X**2)+1)-a
+        
+        plt.contour(X, Y, Z, levels=[0])
+    
+    plt.xlabel('x')
+    plt.ylabel('y')
+    return figcomb3
+
+
+
+
+
+
+#figexact1()
+#figexact2() 
+#figexact3()  
+
+#figcomb3()
