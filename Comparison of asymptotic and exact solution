@@ -1,0 +1,70 @@
+import numpy as np
+from scipy.optimize import root
+import matplotlib.pyplot as plt
+import math
+
+l=[]
+
+
+
+#Enter angle here
+angle=45
+#Set lamda_D here
+c=3
+
+
+
+#Defines functions of the transendental eqaution based on what we want to vary
+def func(x,c):
+     return 1/c - x - math.exp(-x*c)/c + math.sin(a) - math.sin(a)*math.exp(-c*x)
+
+def func2(x,al):
+    return 1/c - x - math.exp(-x*c)/c + math.sin(al) - math.sin(al)*math.exp(-c*x)
+
+
+#Converts to radians
+a=angle*math.pi/180
+
+#Creates list of lambd_D values for input
+lrange=np.linspace(0.001,3.1415,30)
+
+#Approximates the transendetial equation solution for different Lamda_D (c)
+exact = [root(func,1,args=(ci, )).x[0] for ci in lrange]
+
+#Calculates pertubation series for different lambda_D (c)
+aprox = 2*math.sin(a)-(2*(math.sin(a))**2*lrange/3)
+
+#Plot for given angle against varying lamda_D
+plt.scatter(lrange,exact,c="black",label="Exact")
+plt.plot(lrange,aprox,"r",label="Pertubation series")
+#plt.axis([-0.3, 3.5, 0, 2.3])
+plt.xlabel('lambda_D')
+plt.ylabel('Time of flight')
+plt.title("Angle={} degrees".format(angle))
+plt.legend()
+plt.show()
+
+
+
+
+
+#Calcuates an approximate solution to the transendential equation for different angles
+exact2 = [root(func2,1, args=(ci, )).x[0] for ci in lrange]
+
+#Calculates pertubation series for different angles
+for i in lrange:
+    x2=2*math.sin(i)-(2*(math.sin(i))**2*c/3)
+    l.append(x2)
+    
+#Converts numbers used for x-axis to degrees
+lrange2=lrange*180/math.pi
+
+#Plot for given lamda_D against varying angle
+plt.plot(lrange2,exact2,label="Exact")
+plt.plot(lrange2,l,label="Pertubation series")
+plt.axis([0, 180, 0, 2.1])
+plt.xlabel('Angle')
+plt.ylabel('Time of flight')
+plt.title("Lamdba_D={}".format(c))
+plt.legend()
+plt.show()
