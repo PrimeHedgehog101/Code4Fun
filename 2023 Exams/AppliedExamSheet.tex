@@ -1,0 +1,81 @@
+\documentclass[1pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+
+\usepackage[left=1cm, right=1cm, top=1cm,bottom=1cm,]
+{geometry}
+
+
+\begin{document}
+
+\begin{center}
+\section*{Applied exam sheet}
+\end{center}
+
+
+\subsection*{Dynamical systems}
+Equilibrium/fixed points when $\dot{x}=f(x^*)=0$. $f'(x^*)>0$ unstable, $<0$ stable, $=0$ use graphical analysis.
+\\Saddle-node bifurcation: $\dot{x}=r+x^2$, Transcritical: $\dot{x}=rx-x^2$, Pitchfork: $\dot{x}=rx-x^3$, Hysteresis: $\dot{x}=r+x-x^3$, Fold/cusp: $\dot{x}=h+rx-x^3$.
+\\Bifurcation diagram: Impose $f(x^*)=0$ and $f'(x^*)=0$ solve simultaneous.
+\\ Jacobian: $\begin{pmatrix}
+f_x & f_y \\
+g_x & g_y
+\end{pmatrix}$ evaluated at stable points. Eigenvectors: $(J-\lambda I)(x,y)=(0,0)$ for each eigenvalue. Slow=smallest magnitude eigenvalue.Stable=negative. 
+
+\subsection*{Fourier transforms and characteristics}
+Direct Fourier transform is $$\tilde{f}(k)=\int_{-\infty}^{\infty}f(x)e^{-ikx}dx$$ for a function $f(x)$, provided the integral exists.
+\\The inverse Fourier transform is $$f(x)=\frac{1}{2\pi}\int_{-\infty}^{\infty}\tilde{f}(k)e^{ikx}dk$$ where $\tilde{f}(k)$ is a direct Fourier transformed function. This is provided $f(x)$ is continuous at $x$.
+\\
+\\ Properties:
+\\ uniqueness: $f(x)=g(x) \iff \tilde{f}(x)=\tilde{g}(x)$
+\\Linearity: $h(x)=\lambda f(x) + \mu g(x) \iff \tilde{h}(k)=\lambda \tilde{f}(k) + \mu \tilde{g}(k)$
+\\Translation: $g(x)=f(x-a) \iff \tilde{g}(k)=e^{-ika}\tilde{f}(k)$
+\\Frequency shift: $g(x)=e^{ik_0x}f(x) \iff \tilde{g}(k)=\tilde{f}(k-k_0)$
+\\Scaling: $g(x)=f(ax) \iff \tilde{g}(k)=\frac{1}{|a|}\tilde{f}(\frac{k}{a})$
+\\Derivatives: $g(x)=f'(x) \iff \tilde{g}(k)=ik\tilde{f}(k)$
+\\ Factors of x: $g(x)=xf(x) \iff \tilde{g}(k)=i\frac{d\tilde{f}}{dk}$
+\\
+\\Convolution: $(f*g)(x)=\int_{-\infty}^{\infty}f(\xi)g(x-\xi)d\xi$
+\\Convolution theorem: $h(x)=(f*g)(x) \iff \tilde{h}(k)=\tilde{g}(k)\tilde{f}(k)$
+\\Parseval's theorem: $\int_{-\infty}^{\infty}|f(t)|^2dt=\frac{1}{2\pi}\int_{-\infty}^{\infty}|\tilde{f}(\omega)|^2d\omega$
+\\
+\\$a\frac{\partial u}{\partial x}+b\frac{\partial u}{\partial y}=c \Rightarrow \frac{dx}{ds}=a$,$\frac{dy}{ds}=b$,$\frac{du}{ds}=c$
+\\Conservation of cars: $\frac{\partial \rho}{\partial t}+\frac{\partial}{\partial x}(\rho v)=0$ where $v$ is given.
+\\ Straight lines?: $\rho$ is conserved along each char, gradient only depends on $\rho$ so constant gradient for each char.
+
+
+
+
+\subsection*{Inviscid fluid flows}
+Derivation of Euler's method:
+\\Taylors theorem, $f(x)=f'(a)(x-a)+\frac{1}{2}f''(a)(x-a)^2+...+\frac{1}{k!}f^{(k)}(a)(x-a)^k$
+\\ Where $R_k(x)=\frac{1}{(k+1)!}f^{(k+1)}(\xi)(x-a)^{k+1}$ for $\xi$ in-between a and x.
+\\Expand about $t_k$, $x(t_k+h)=x(t_k)+hx'(t_k)+\frac{h^2}{2}x''(\xi)=x(t_k)+hu(t_k,x(t_k))+\frac{h^2}{2}x''(\xi)$ where $t_k \leq \xi \leq t_k+h$
+\\Assume error small, $x_{k+1}=x_k+hu(t_k,x_k)$
+\\
+\\Trapezium rule: $\frac{dx}{dt}=u(t), x(0)=x_0$
+\\ Intergrating, $x(t)=x_0+\int_0^t u(s) ds$
+\\For $t_k=kh$, $x(t_k)=x(t_{k-1})+\int_{t_{k-1}}^{t_k} u(s) ds$, 
+\\$x(t_{k+1})=x(t_k)+\int_{t_k}^{t_{k+1}} u(s) ds = x(t_k)+\frac{1}{2}h[u(t_k)+u(t_{k+1})]$
+\\$x_{k+1}=x_k+\frac{1}{2}h[u(t_k)+u(t_{k+1})]$ with $t_k=kh$
+
+
+\subsection*{Complex potential}
+
+Uniform stream: $w=Uze^{-i\alpha}$, Point source/sink: $w=\frac{K}{2\pi}\log z$, Line vortex: $w=-\frac{i\Gamma}{2\pi}\log z$, Dipole: $w=-\frac{\mu e^{i\alpha}}{z}$, $\mu>0$.
+\\$e^{i\alpha}=\cos \alpha + i\sin \alpha$
+\\$\phi+i\psi=w$
+\\Helmholtz principle.
+\\$\underline{u}=\nabla \phi= \frac{\partial \phi}{\partial r} \underline{\hat{r}}+\frac{\partial \phi}{\partial \theta}\frac{1}{r} \underline{\hat{\theta}}$
+\\$u=\frac{\partial \phi}{\partial x}$, $v=-\frac{\partial \psi}{\partial y}$
+\\$u_r=\frac{\partial \phi}{\partial r}$ and $u_{\theta}=\frac{1}{r}\frac{\partial \phi}{\partial \theta}$
+\\Circulation: $\int_0^{2\pi} \underline{u}\cdot\underline{\theta}ad\theta$ where $r=a$
+
+\section*{General}
+Quotient rule: $\frac{d}{dx}\frac{f}{g}=\frac{gf'-fg'}{g^2}$
+
+
+
+
+\end{document}
