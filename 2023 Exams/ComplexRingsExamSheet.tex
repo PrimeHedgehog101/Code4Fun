@@ -1,0 +1,104 @@
+\documentclass[1pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+
+\usepackage[left=1cm, right=1cm, top=1cm,bottom=1cm,]
+{geometry}
+
+
+\begin{document}
+
+\begin{center}
+\section*{Complex integration/Rings Exam sheet}
+\end{center}
+\small
+\subsection*{Complex Integration}
+
+Circular curve: $a+bi+re^{it}$
+\\Cauchy's intergral formulea: $i) \ \ f(a)=\frac{1}{2\pi i}\int_{\gamma}\frac{f(z)}{z-a}dz$ where $\gamma$ is closed, $f$ is holomorphic on and inside $\gamma^*$ and $a\in \gamma^*$.
+\\ Cauchy s formula: $\int_{\gamma} f(z)dz=0$ if $f$ is holomorphic on and inside a simple closed path $\gamma$.
+\\
+\\ Definition 10.1 Let f be a complex function.
+\\(i) The point $a \in \mathbb{C}$ is a regular point of f if f is holomorphic at a.
+\\(ii) The point $a \in \mathbb{C}$ is a singularity of f if it is not a regular point but it is a limit
+point of regular points. A singularity a of f is called
+\\(a) an isolated singularity if f is holomorphic in some punctured disc $D'
+(a; r)$;
+\\(b) a non-isolated essential singularity otherwise.
+\\
+\\Residue Lemma 11.3: If $f$ has a simple pole at $a$ then $$res\{f;a\}=\lim_{z\rightarrow a}(z-a)f(z)$$
+
+\subsection*{Rings}
+Sub-ring test: For a sub set $S\subset R$, Sub ring if
+\begin{itemize}
+\item $0,1\in S$
+\item $S$ is a subgroup of $(R,+)$: Show closure under addition and the additive inverse is in $S$.
+\item Closure under multiplication.
+\end{itemize} 
+Unit: A unit $u$ if $\exists v \in R$ s.t $uv=1=vu$ (ie $u$ has a multiplicative inverse)
+\\ $a,b$ are associates if $\exists$ a unit $u$ s.t $a=ub$.
+\\ Given an associate, find all units, then multiply the associate with the units to find the other associates. (Find units by finding numbers co prime to mod n.
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\textbf{Open Set:} $S \subseteq \bb{C}$ is open if 
+$$\brac{\forall z \in S}\brac{\exists \delta \in \bb{R}_{>0}} \; D\brac{z;\delta} \subseteq S.$$
+\textbf{Closed Set:} $S \subseteq \bb{C}$ is closed if $\bb{C} \setminus S$ is open. \\[\baselineskip]
+\textbf{Bounded Set:} $S \subseteq \bb{C}$ is bounded if 
+$$\brac{\exists M \in \bb{R}} \; S \subseteq \overline{D}\brac{0,M} \text{ or equivalently } \brac{\forall z \in S} \; \abs{z} \leq M.$$
+\\
+\\
+\textbf{Definition (Curve):} A curve is a continuous function $\gamma : \sbrac{a,b} \rightarrow \bb{C}$, where $\sbrac{a,b} \subseteq \bb{R}$.
+We call $\gamma\brac{a}$ the initial point of $\gamma$ and $\gamma\brac{b}$ the final point of $\gamma$. \\[\baselineskip]
+
+A curve $\gamma$ is said to be closed if $\gamma\brac{a} = \gamma\brac{b}$. We say that $\gamma$ is simple if it is injective on $\brac{a,b}$.
+We say that $\gamma$ is smooth if it is differentiable and has a continuous derivative. \\[\baselineskip]
+
+\textbf{Curve Inversion:} Given a curve $\gamma : \sbrac{a,b} \rightarrow \bb{C}$, the inversion of $\gamma$ is denoted by $-\gamma$ and 
+it is defined by $-\gamma\brac{t} = \gamma\brac{b+a-t}$ for $t \in \sbrac{a,b}$. 
+That is, $-\gamma$ is the same curve in the opposite direction. \\[\baselineskip]
+
+\textbf{Joining Curves:} Let $\gamma_1 : \sbrac{a,b} \rightarrow \bb{C}$  and $\gamma_2 : \sbrac{b,c} \rightarrow \bb{C}$ such that
+$\gamma_1\brac{b} = \gamma_2\brac{b}$. Then, 
+\[
+   \gamma_1 \cup \gamma_2 : \sbrac{a,c} \rightarrow \bb{C} = 
+   \begin{cases}
+      \gamma_1\brac{t}, & \text{if } t \in \sbrac{a,b}; \\
+      \gamma_2\brac{t}, & \text{if } t \in \sbrac{b,c}.
+   \end{cases}
+\]
+
+\textbf{Definition (Path):} A path is a curve which is the join of finitely many smooth curves. We call the image sets of paths shapes. \\[\baselineskip]
+
+\textbf{Contour/Circline Path:} A circline path is a path which is a join of finitely many line segments and/or circular arcs. A contour
+is a simple closed circline path. \\[\baselineskip]
+
+\textbf{Region (Definition):} A set $S \subseteq \bb{C}$ is said to be path connected if for every $z,w \in S$ with $z \neq w$, 
+there exists a path $\gamma$ such that the initial point of $\gamma$ is $z$, the final point is $w$, and the entire image $\gamma^*$ of $\gamma$
+is contained in $S$. An open path connected set is called a region.
+\\
+\\ \textbf{Along a path:}
+$$\int_{\gamma} f\brac{z} \; \d z := \int_{a}^{b} f\sbrac{\gamma\brac{t}}\gamma'\brac{t} \; \d t.$$
+\textbf{Fundamental Estimate:} 
+$$\abs{\int_{\gamma} f\brac{z} \; \d z} \leq \int_a^b \abs{f\sbrac{\gamma\brac{t}}} \cdot \abs{\gamma'\brac{t}} \; \d t.$$
+\textbf{Corollary:} Put $M = \sup_{z \in \gamma^*}\abs{f\brac{z}}$ and $\ell = \int_a^b \abs{\gamma'\brac{t}} \; \d t$ (the length
+of $\gamma$). Then,
+$$\abs{\int_\gamma f\brac{z} \; \d z} \leq M\ell.$$
+
+
+
+
+
+
+
+\end{document}
