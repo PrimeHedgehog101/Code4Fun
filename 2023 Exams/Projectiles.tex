@@ -1,0 +1,99 @@
+\documentclass[1pt]{article}
+\input{commands.tex}
+
+
+\usepackage[left=1cm, right=1cm, top=1cm,bottom=1.5cm,]
+{geometry}
+
+
+\begin{document}
+\section{2020-21 Modelling Question 2}
+A ball is fired vertically upwards, from the origin, with speed $V_0$. Its position vector at time $t$ is given by $\mathbf{x} = x(t)\mathbf{i} + z(t)\mathbf{k}$, where $\mathbf{k}$ points vertically upwards.
+
+The ball is spinning such that it experiences a Magnus force $\mathbf{F}$ in the $x$-$z$ plane, perpendicular to the velocity of the ball, with $|\mathbf{F}| = K|\dot{x}|^2$, where $K$ is a positive constant. The force is directed in the positive $x$ direction when the ball is moving upwards, and in the negative $x$ direction when the ball is moving downwards. In addition, the ball experiences a force due to gravity, with $g$ being the gravitational acceleration.
+
+(i) Show that
+\[
+\mathbf{F} = K\left(\dot{x}^2 + \dot{z}^2\right)^{\frac{1}{2}}\left(\dot{z}\mathbf{i} - \dot{x}\mathbf{k}\right).
+\]
+
+(ii) Using $V_0$ and $g$, define non-dimensional variables $X$ and $\tau$ for horizontal position and time, and show that $\dot{x} = V_0X\tau$ and $\ddot{x} = gX\tau^2$.
+Hence, show that the non-dimensional equations of motion are
+\[
+U_{\tau} = \mu\left(U^2 + W^2\right)^{\frac{1}{2}}W, \quad W_{\tau} = -1 - \mu\left(U^2 + W^2\right)^{\frac{1}{2}}U,
+\]
+where $U = X_{\tau}$, $W = Z_{\tau}$, and $\mu$ is a dimensionless parameter which you should define.
+
+(iii) If the effect of spin is small, so $\mu = \varepsilon \ll 1$, obtain perturbation solutions for $U$ and $W$ in the form
+\[
+U = u_0(\tau) + \varepsilon u_1(\tau) + \mathcal{O}(\varepsilon^2), \quad W = w_0(\tau) + \varepsilon w_1(\tau) + \mathcal{O}(\varepsilon^2),
+\]
+where $u_0$, $u_1$, $w_0$, and $w_1$ should be found for $0 \leq \tau \leq 1$.
+
+(iv) Correct to $\mathcal{O}(\varepsilon^2)$, calculate the maximum height reached by the ball and the horizontal distance that has been traveled when the ball returns to the ground.
+
+
+\subsection*{(i)}
+We are given $|F|=k|\dot{\mathbf{x}}|^2$.
+\\ We are also given that the force $F$ acts perpendicular to the motion. Hence, if we define the normal to act perpendicular to the motion of the ball, we have $$\underline{F}=k|\dot{\mathbf{x}}|^2 \cdot \underline{\hat{n}}$$ As the normal acts perpendicular to the motion x, we have $$\underline{\hat{n}}=\frac{\dot{z}\underline{i}-\dot{x}\underline{k}}{|\dot{\mathbf{x}}|}$$ We scale it by $|\dot{x}|$ as the force only acts in the $i$ direction. Hence we have 
+$$\underline{F}=k|\dot{\mathbf{x}}|^2 \cdot \frac{\dot{z}\underline{i}-\dot{x}\underline{k}}{|\dot{\mathbf{x}}|}$$
+$$\underline{F}=k(\dot{x}^2+\dot{z}^2)^{\frac{1}{2}}(\dot{z}\underline{i}-\dot{x}\underline{k})$$ as required.
+
+\subsection*{(ii)}
+Using $F=ma$ we have $$m\ddot{\underline{x}}=-mg\underline{k}+\underline{F}$$
+\\ Non dimensionalise using $v_0$ and $g$: 
+\\ Let $\underline{x}=L\underline{X}$ and $t=T\tau$. Then it follows that we have $\underline{\dot{x}}=LT^{-1}$ and $\underline{\ddot{x}}=LT^{-2}$
+\\ $[v_0]=LT^{-1}$ and $[g]=LT^{-2}$. 
+\\ We want to make $L$ and $T$ using $v_0$ and $g$. Hence $L=\frac{v_0^2}{g}$ and $T=\frac{v_0}{g}$
+\\ Hence $\underline{x}=\frac{v_0^2}{g}\underline{X}$ , $\underline{\dot{x}}=v_0\underline{X}_{\tau}$ , $\underline{\ddot{x}}=g\underline{X}_{\tau\tau}$
+\\ 
+\\ Using these results we can sub these into $F=ma$ to get $$mg\underline{X}_{\tau\tau}=-mg\underline{k}+k(\dot{x}^2+\dot{z}^2)^{\frac{1}{2}}(\dot{z}\underline{i}-\dot{x}\underline{k})$$ This is our non dimensional governing equation of this setup. We can now take components to form two new equations.
+\\
+\\ Taking $\underline{k}$ components:
+\\
+\\  $$mgZ_{\tau\tau}=-mg-k(\dot{x}^2+\dot{z}^2)^{\frac{1}{2}}\dot{x}$$
+$$mgZ_{\tau\tau}=-mg-kv_0^2X_{\tau}(X_{\tau}^2+Z_{\tau}^2)^{\frac{1}{2}}$$
+By defining $\mu=\frac{v_0^2k}{mg}$ and  $U = X_{\tau}$, $W = Z_{\tau}$ we get
+$$ W_{\tau}=-1-\mu(U^2+W^2)^{\frac{1}{2}}U$$
+\\
+\\ Taking $\underline{i}$ components:
+\\
+\\ $$mgX_{\tau\tau}=k(\dot{x}^2+\dot{z}^2)^{\frac{1}{2}}\dot{z}$$
+$$mgX_{\tau\tau}=kv_0^2Z_{\tau}(X_{\tau}^2+Z_{\tau}^2)^{\frac{1}{2}}$$
+$$U_{\tau}=\mu(U^2+W^2)^{\frac{1}{2}}W$$ as required.
+
+\subsection*{(iii)}
+We should first find initial conditions in terms of the perturbation series as this will help simplify the problem. From the problem given, we can infer $X(0)=Z(0)=0$ as the ball starts at the origin. $X_{\tau}(0)=0$ as the horizontal velocity is initially $0$. $Z_{\tau}(0)=1$ as we have non dimentialised the initial velocity $v_0$.
+\\
+\\ Comparing this to the perturbation series we have $$W(0)=w_0(0)+\epsilon w_1(0)+O(\epsilon^2)=Z_{\tau}(0)=1$$ so we have $w_0(0)=1$,$w_1(0)=0$
+\\ $$U(0)=u_0(0)+\epsilon u_1(0)+O(\epsilon^2)=X_{\tau}(0)=0$$ so we have $u_0(0)=0$,$u_1(0)=0$
+\\
+\\ Subbing the perturbation series into our two equations we have 
+$$(u_0+\epsilon u_1)_{\tau}=\epsilon(u_0^2+w_0^2)^{\frac{1}{2}}w_0+O(\epsilon^2)$$
+Re-arrange to group $\epsilon$ terms, and comparing coefficients e find $(u_0)_{\tau}=0$ so $u_0=C=0$ by IC.
+\\ We also have $$(u_1)_{\tau}-w_0^2=0$$
+\\
+\\ Our second equation becomes $$(w_0+\epsilon w_1)_{\tau}+\epsilon(u_0^2+w_0^2)^{\frac{1}{2}}u_0+O(\epsilon^2)=-1$$ we found that $u_0=0$ previously so we now have $$(w_0)_{\tau}+\epsilon (w_1)_{\tau}=-1$$ hence $(w_0)_{\tau}=-1$ so $w_0=-\tau+c_2$ hence $w_0=1-\tau$ by IC. We also have $(w_1)_{\tau}=0$ so $w_1=c_3=0$ by IC.
+\\
+\\ Finally we can come back to $$(u_1)_{\tau}-w_0^2=0$$ to find $(u_1)_{\tau}=(1-\tau)^2$ so $u_1=\tau(1-\tau+\frac{\tau^2}{3})$
+\\
+\\ Hence we have $$U=\epsilon(\tau_\tau^2+\frac{\tau^3}{3})+O(\epsilon^2)$$ and $$W=1-\tau$$
+\\
+\subsection*{(iv)}
+The max height occurs when $W=0$ as the velocity is $0$. So when $1-\tau=0$ so $\tau=1$. To find the height we sub this time into $Z=\int W d\tau$ to find Max height = $\tau-\frac{\tau^2}{2}=\frac{1}{2}$. 
+\\
+\\ For the horizontal distance, we need to find the time of flight first. This is when $Z=0$ so when $\tau-\frac{\tau^2}{2}=0$ so when $\tau_{>0}=2$ subbing this into $$X=\int U d\tau = \epsilon[\frac{\tau^2}{2}-\frac{\tau^3}{3}+\frac{\tau^4}{12}]+O(\epsilon^2)=\frac{2\epsilon}{3}$$ This is expenceted as the problem describes a ball being fired vertically upwards, with only a Magnus force affecting the $x$ velocity. So for a small Magnus force ie small $\epsilon$, the horizontal distance will be near 0.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
