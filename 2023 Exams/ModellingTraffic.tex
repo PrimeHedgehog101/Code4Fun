@@ -1,0 +1,91 @@
+\documentclass[1pt]{article}
+
+\input{commands.tex}
+
+
+\usepackage[left=1.5cm, right=1.5cm, top=1cm,bottom=1.5cm,]
+{geometry}
+
+
+\begin{document}
+
+\section*{2020-21 Question 1}
+\subsection*{1.i)}
+Traffic is flowing on a single lane road with velocity $u(x, t)$ and density
+$\rho(x, t)$. Assuming the velocity-density relation has the non-dimensional
+form $u = 1-\rho$, starting from the equation of conservation of cars, show
+that $\rho$ is a constant along the characteristics:
+$x = (1 - 2\rho)t + x_0$, where $x_0$ is a constant.
+\\
+\\ The equation of conservation of cars is $$\frac{\partial \rho}{\partial t}+\frac{\partial}{\partial x}(\rho u)=0$$
+\\ Using $u=1-\rho$ we get $$\frac{\partial \rho}{\partial t}+\frac{\partial}{\partial x}(\rho-\rho^2)=0$$
+\\ Using chain rule we get $$\frac{\partial \rho}{\partial t}+\frac{\partial}{\partial \rho}(\rho-\rho^2)\frac{\partial \rho}{\partial x}=0$$
+\\ Hence $$\frac{\partial \rho}{\partial t}+(1-2\rho)\frac{\partial \rho}{\partial x}=0$$
+\\ By characteristics we find $\frac{dt}{ds}=1$, $\frac{dx}{ds}=1-2\rho$, $\frac{d\rho}{ds}=0$
+\\ So $\frac{d\rho}{ds}=0$ so $\rho$ is constant along characteristics.
+
+\subsection*{ii) a)}
+Traffic has built up behind an obstruction at $x = 1$ which is then cleared. At $t = 0$, the density is given by
+
+\[
+\rho(x, 0) = 
+\begin{cases}
+\frac{1}{2}, & x < 0, \\
+\frac{1}{4}(3x + 1), & 0 \leq x \leq 1, \\
+\frac{1}{2}, & 1 < x.
+\end{cases}
+\]
+
+Find the characteristics in each region, and show that expansion fans will grow from $x = 0$ and $x = 1$.
+\\
+\\ $\frac{dx}{dt}=1-2\rho$ so $$x=(1-2\rho_0)t+x_0$$
+\\ We will now consider each range of densities given in the question.
+\\ For $x<0$ we have $\rho_0=\frac{1}{2}$ so $$x=x_0$$ this is true until $x_0=0$ so until $x=0$.
+\\ For $0\leq x \leq 1$ we have $\rho_0=\frac{1}{4}(3x+1)$ so $$x=\frac{t}{2}(1-3x_0)+x_0$$ this is true until $x_0=1$ so until $x=1-t$
+\\ For $1<x$ we have $\rho_0=\frac{1}{2}$ so $$x=x_0$$ this is true for $1<x_0$. 
+\\ Plotting it we have vertical lines for $x<0$ and $x>1$ with lines angled in to each other for $0<x<1$.
+
+\subsection*{b)}
+Show that the characteristics which have $0 \leq x_0 \leq 1$ intersect at $t = \frac{2}{3}$ indicating the start of a shock. Denoting the shock position by $x = S(t)$, show that the shock initially propagates with speed $\frac{dS}{dt} = \frac{S}{t} - \frac{1}{2t}$.
+\\
+\\ For $x_0=0$ we have $x=\frac{t}{2}$
+\\ For $x_0=1$ we have $x=1-t$ these intersect when $\frac{t}{2}=1-t$ so $t=\frac{2}{3}$ as required, creating a shock.
+\\
+\\ We know $$\frac{dS}{dt}=\frac{q_1-q_2}{\rho_1-\rho_2}=\frac{\rho_1(1-\rho_1)-\rho_2(1-\rho_2)}{\rho_1-\rho_2}=1-\rho_1-\rho_2$$
+\\
+\\ We need to find the density before and after the shock wave. The shock wave occurs between the two expansion fans at $x_0=0,1$. The characteristic for this region is given by $$x=(1-2\rho)t+x_0$$ The density in the left expansion fan at $x_0=0$ is found by subbing $x_0=0$ into the characteristic equation and finding $\rho$.
+\\ For $x_0=0$ we have $\rho_1=\frac{1}{2}-\frac{x}{2t}$ and $\rho_2=\frac{1}{2}-\frac{x-1}{2t}$.
+\\ Hence $$\frac{dS}{dt}=\frac{x}{t}-\frac{1}{2t}=\frac{S}{t}-\frac{1}{2t}$$ where $S(t)=x$.
+
+\subsection*{c)}
+Hence calculate the shock position for all time.
+\\
+\\ $$\frac{dS}{dt}=\frac{S}{t}-\frac{1}{2t}$$
+$$\frac{dS}{dt}=\frac{1}{t}(S-\frac{1}{2})$$
+$$\frac{1}{S-\frac{1}{2}}dS=\frac{1}{t}dt$$
+$$\ln|S-\frac{1}{2}|=\ln|t|+c_1$$
+$$S(t)=c_2t+\frac{1}{2}$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
