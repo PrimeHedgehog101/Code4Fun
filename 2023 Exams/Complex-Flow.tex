@@ -1,0 +1,96 @@
+\documentclass[1pt]{article}
+\input{commands.tex}
+\usepackage{hyperref}
+
+\usepackage[left=1cm, right=1cm, top=1cm,bottom=2cm,]
+{geometry}
+
+
+\begin{document}
+\tableofcontents
+\newpage
+\section{2021-22 Question 4}
+The complex potentisal of a flow for $|z|>a$ is given as $$w=Uz+\frac{a^2U}{z}+\frac{5aUi}{z}\log z$$
+\subsection{i)(a)}
+What flows are represented in w?
+\\
+\\Term 1: Uniform stream parallel to x-axis.
+\\Term 2: Dipole at origin.
+\\Term 3: Point source at origin. (If sign was negative it would be a sink)
+\subsection{(b)}
+Show that $$\frac{dw}{dz}=u-iv$$
+\\
+\\ We can write the potential as $w(z)=\phi+i\psi$. Differentiating we get $$\frac{dw}{dz}=\frac{\partial\phi}{\partial z}+i\frac{\partial \psi}{\partial z}=\frac{\partial\phi}{\partial x}\frac{dx}{dz}+i\frac{\partial\psi}{\partial x}\frac{dx}{dz}=\frac{\partial\phi}{\partial x}+i\frac{\partial\psi}{\partial x}=u-iv$$ by Cauchy theorem.
+\subsection{(c)}
+Find all stagnation points, and show only one lies in $|z|>a$ on the imaginary axis.
+\\
+\\S.P occour when $$\frac{dw}{dz}=0$$ hence we have $$\frac{dw}{dz}=U-\frac{a^2U}{z^2}+\frac{5aUi}{2z}=0$$
+$$z^2+\frac{5ai}{2}z-a^2=0$$ Using the quadratic formula we get $$2z=-5/2ai\pm \sqrt{-25/4a^2+4a^2}$$ $$2z=-5/2ai\pm \frac{1}{2}\sqrt{-25a^2+16a^2}$$
+$$4z=-5ai\pm 3ai$$ so both stagnation points lie on imaginary axis as they are purely imagery. Secondly one is at $z=\frac{-1}{2}ai$ which is $|z|<a$ and the other is at $z=-2ai$ which is $|z|>a$.
+\subsection{ii) (a)}
+Obtain expressions for $\phi$ and $\psi$ in terms of $r$ and $\theta$.
+\\
+\\Using $z=re^{i\theta}$ and that $w=\phi+i\psi$ we get $$w=Ure^{i\theta}+\frac{a^2Ue^{-i\theta}}{r}+\frac{5aUi}{2}\log(re^{i\theta})=\phi+i\psi$$
+$$w=Ur[\cos\theta+i\sin\theta]+\frac{a^2U}{r}[\cos\theta-i\sin\theta]+\frac{5aUi}{2}[\log(r)+i\theta]=\phi+i\psi$$
+$$Re(w)=\phi=U(r+\frac{a^2}{r}\cos\theta)-\frac{5aU}{2}\theta$$
+$$Im(w)=\psi=U(r-\frac{a^2}{r}\sin\theta)+\frac{5aU}{2}\log(r)$$
+\subsection{(b)}
+Obtain expressions to the radial $u_r$ and circumferential velocity $u_{\theta}$ in terms of $r$ and $\theta$.
+\\
+\\ $u_r=\frac{\partial \phi}{\partial\theta}$ $$u_r=U(1-\frac{a^2}{r^2})\cos\theta$$ and $u_{\theta}=\frac{1}{r}\frac{\partial\phi}{\partial\theta}$ 
+$$u_{\theta}=-U(1+\frac{a^2}{r^2})\sin\theta-\frac{5aU}{2r}$$
+Hence we have $$[u_r,u_{\theta}]=[U(1-\frac{a^2}{r^2})\cos\theta ,-U(1+\frac{a^2}{r^2})\sin\theta-\frac{5aU}{2r}]$$
+\subsection{(c)}
+Compute the speed and direction on $r=a$.
+\\
+\\On $r=a$ we have $$[0,\frac{-5U}{2}]$$ hence flow is travelling at $\frac{5U}{2}$ speed in $-\underline{\hat{\theta}}$ direction, ie clockwise. Fluid is travelling tangential to the cylinder on $|z|=a$ which is a property of inviscid flow.
+\newpage
+
+
+\section{2020-21 Question 3}
+\subsection{i)}
+Give the definition of the complex potential, and show that $\frac{dw}{dz}=u-iv$
+\\
+\\ $w(z)=\phi+i\psi$, We can write the potential as $w(z)=\phi+i\psi$. Differentiating we get $$\frac{dw}{dz}=\frac{\partial\phi}{\partial z}+i\frac{\partial \psi}{\partial z}=\frac{\partial\phi}{\partial x}\frac{dx}{dz}+i\frac{\partial\psi}{\partial x}\frac{dx}{dz}=\frac{\partial\phi}{\partial x}+i\frac{\partial\psi}{\partial x}=u-iv$$ by Cauchy theorem.
+
+\subsection{ii)}
+Find the stagnation points of $w_1(z)=z^2$ where $w_1$ represents a corner flow bounded by $\theta=0,\frac{\pi}{2}$. Then find $\psi_1$.
+\\
+\\ Stagnation points when $\frac{dw_1}{dz}=2z=0$ so S.P when $z=0$.
+\\ $w_1=x^2-y^2+2xyi$ so $\phi=x^2-y^2$ and $\psi=2xy$.
+\\ Streamlines when $\psi=const$, $y=\frac{C}{x}$.
+\subsection{iii)}
+Consider the flow with complex potential $w_2(z) = 1/z^2$
+. By first obtaining the stream function $\psi_2$ for this flow, sketch the streamlines in
+the domain $0\leq \theta \leq \frac{\pi}{2}$
+\\
+\\ $$w_2=\frac{1}{z^2}=\phi+i\psi=\frac{1}{r^2}[\cos(2\theta)-i\sin(2\theta)]$$ 
+\\ Hence $\phi=\frac{1}{r^2}\cos(2\theta)$ and $\psi=\frac{-1}{r^2}\sin(2\theta)$
+\\ Streamlines when $\psi=\frac{-1}{r^2}\sin(2\theta)=const$ This is a dipole.
+\subsection{iv)}
+Explaining your reasoning, construct a flow within the domain $r\geq 1$ ,
+$0\leq \theta \leq \frac{\pi}{2}$ , with solid walls at $\theta = 0, \pi/2$ and at $r = 1$ . Determine
+the maximum flow speed on the circular arc and the location where it
+occurs. Sketch the streamlines for this flow.
+\\
+\\ As $w_1(z)=z^2$ represents flow with boundaries at $\theta=0,\frac{\pi}{2}$ we can combine this with a flow of $w=\frac{\bar{a^2}}{\bar{z^2}}$ using the definition of circular flow. Hence we have $$w=z^2+\frac{1}{z^2}$$ To find the max flow speed on the cylinder we can convert to cylindrical co-ordinates for our velocity. $$w=r^2e^{2i\theta}+\frac{1}{r^2}e^{-2i\theta}=r^2[\cos(2\theta)+i\sin(2\theta)]+\frac{1}{r^2}[\cos(2\theta-i\sin(2\theta)]$$ so $$\phi=Re(w)=\cos(2\theta)(r^2+\frac{1}{r^2})$$ Using $\underline{u}=[u_r,u_{\theta}]=[\frac{\partial \phi}{\partial r}, \frac{1}{r}\frac{\partial \phi}{\partial \theta}]$ we have $$\underline{u}=[2\cos(2\theta)(r-\frac{1}{r^3}), -2\sin(2\theta)(r+\frac{1}{r^3})]$$ On $r=1$ we have $$\underline{u}=[0,-4\sin(2\theta)]$$ which implies no radial flow. The max flow is when $-4\sin(2\theta)=max$ ie when $\theta=\frac{\pi}{4}$. This occurs at $(r,\theta)=(1,\frac{\pi}{4})$.
+\subsection{v)}
+The potential for a point source is $w_3=\frac{k}{2\pi}\log(z-z_0)$. We will introduce two image source's at $z=\bar{z_0}$ and $z=-x+iy=\tilde{z}$ to make boundary at $y=0$ and $x=0$. Hence $w=w_1+w_2+w_3+\frac{k}{2\pi}\log(z-\bar{z_0})+\frac{k}{2\pi}\log(z-\tilde{z_0})$. Sub in $x=0$,$y=0$ to show perpendicular flow.
+\subsection{vi)}
+Obtain the far-field velocity for the flow in part (v)
+\\
+\\ idk
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
