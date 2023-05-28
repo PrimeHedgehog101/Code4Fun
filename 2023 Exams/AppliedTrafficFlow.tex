@@ -1,0 +1,64 @@
+\documentclass[1pt]{article}
+\input{commands.tex}
+\usepackage{hyperref}
+
+\usepackage[left=1cm, right=1cm, top=1cm,bottom=2cm,]
+{geometry}
+
+
+\begin{document}
+
+\section{2021-22 Question 1}
+
+In a simple one-dimensional continuum model for traffic flow, the density
+of cars at point x and time t is given by $\rho(x, t)$, and can range between
+0 and 9/4. The speed of cars depends only on the local density, and is
+modelled as $v(\rho) = 1 - \frac{2}{3}\rho^{\frac{1}{2}}$. At $t = 0$ , the density of cars is given by
+$$\rho(x, 0) = \rho_0(x) = \begin{cases}
+0 & x\leq 0 \\
+x^2 & 0<x<1 \\ 
+1 & 1\leq x
+\end{cases}$$
+\subsection{ii) a)}
+Write down the equation for conservation of cars. Show that the
+characteristics in the $x-t$ plane are given by $\frac{dx}{dt}=1-\rho^{\frac{1}{2}}$ and explain why they must be straight lines.
+\\
+\\ The equation of conservation of cars is $$\frac{\partial \rho}{\partial t}+\frac{\partial}{\partial x}(\rho v)=0$$
+\\ We are given that $v(\rho)=1-\frac{2}{3}\rho^{\frac{1}{2}}$, so we can write our governing equation as $$\frac{\partial \rho}{\partial t}+\frac{\partial}{\partial x}(\rho-\frac{2}{3}\rho^{\frac{3}{2}})=0$$ Using chain rule we have $$\frac{\partial \rho}{\partial t}+\frac{\partial}{\partial \rho}(\rho-\frac{2}{3}\rho^{\frac{3}{2}})\frac{\partial \rho}{\partial x}=0$$ hence we have $$\frac{\partial \rho}{\partial t}+\frac{\partial}{\partial \rho}(1-\rho^{\frac{1}{2}})\frac{\partial \rho}{\partial x}=0$$ We can now use characteristics to form the following three equations; $\frac{dt}{ds}=1$, $\frac{dx}{ds}=1-\rho^{\frac{1}{2}}$, $\frac{d\rho}{ds}=0$. Dividing 2 by 1 we get $$\frac{dx}{dt}=1-\rho^{\frac{1}{2}}$$
+\\
+\\ We will get straight lines for the gradient as $\rho$ is conserved along each characteristic. Since the gradient only depends on $\rho$ we have a constant gradient thus straight lines.
+\subsection{b)}
+Use the method of characteristics to solve for the density $\rho(x, t)$ for
+$0\leq t\leq 1$. Show that a shock first forms at $x = 1 , t = 1$.
+\\
+\\ We have $$\frac{dx}{dt}=1-\rho^{\frac{1}{2}}$$ The gradient is constant, so this will be given by the boundary condition at $t=0$.
+\\ Hence $$\frac{dx}{dt}=1-\rho_0(x_0)^{\frac{1}{2}}$$
+\\ Integrating we get $$x=(1-p_0^{\frac{1}{2}})t+x_0$$ where $(x,t)=(x_0,0)$. 
+\\ 
+\\ We now need to evaluate this for the different values of $\rho_0$. These are given by $x_0\leq 0$, $0<x_0<1$ and $x_0\geq 1$. 
+\\
+\\ For $x_0\leq 0$ we have $\rho_0=0$ so $$x=t+x_0$$ The limiting characteristic (ie when the characteristics begin to change) is when $x_0=0$, so we have $$x=t$$ this is true for $x<t$.
+\\
+\\ For $0<x_0<1$, $\rho_0=x^2$ so $$x=(1-x_0)t+x_0$$ We already know what happens when $x_0=0$ as we just did that, so for $x_0=1$ the limiting characteristic is $$x=x_0=1$$ This is true for $t<x<1$. The limiting characteristic indicates a vertical line. 
+\\
+\\ For $x_0>1$, $\rho_0=1$ so $$x=x_0=1$$ for all $x_0>1$ so we have vertical lines. This is true for $x>1$.
+\\
+\\ A shock forms as when $x_0=0$ we have $x=t$ and when $x_0=1$ we have $x=1$. These meet at $t=1$ indicating a shock.
+\subsection{c)}
+Sketch $\rho$ as a function of x for some representative values of $t\leq 1$.
+\\
+\\ We know the density for $x\leq 0$ is $\rho_0=0$ and $x\geq 1$ is $\rho_0=1$ so we just need to work out the value of $\rho$ in-between. Hence for $0<x<1$ we have $\rho_0=x^2$ so $$x=(1-x_0)t+x_0$$ Rearranging for $x_0$ we have $x_0=\frac{x-t}{1-t}$. Substituting into $\rho_0=x^2$ we have $\rho(x,t)=\frac{(x-t)^2}{(1-t)^2}$ for $t<x<1$.
+\\
+\\Hence we have $$\rho(x,t)=\begin{cases}
+0 & x\leq t \\
+\frac{(x-t)^2}{(1-t)^2} & t<x<1 \\
+1 & x\geq 1
+\end{cases}$$
+
+
+
+
+
+
+
+\end{document}
