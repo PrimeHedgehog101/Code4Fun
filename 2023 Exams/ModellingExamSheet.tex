@@ -1,0 +1,62 @@
+\documentclass[1pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+
+
+\usepackage[left=1.5cm, right=1.5cm, top=1cm,bottom=1cm,]
+{geometry}
+
+
+\begin{document}
+
+\begin{center}
+\section*{Modelling exam sheet}
+\end{center}
+
+
+
+\subsection*{Traffic and heat}
+Derive the equations which model a dialysis machine, where $u(x)$ is waste in blood and $v(x)$ is waste in dialysate, and pure dialysate flows in at $x=0$.
+\\Flow in = flow out
+\\ Speed of dialysate in is $aq$ and speed of blood in is $q$ 
+\\ $aqv(x)\delta t = aqv(x+\delta x)\delta t$ + Amount gained 
+\\ $aqv(x)\delta t = aqv(x+\delta x)\delta t - k(u-v)\delta x \delta t$
+\\Re-arranging we get $\frac{v(x+\delta x) - v(x)}{\delta x}=\frac{k}{aq}(u-v)$
+\\ As $\delta x \longrightarrow 0$ we have $\frac{dv}{dx}=\frac{k}{aq}(u-v)$
+\\ Second equation is 
+\\ $qu(x+\delta x)=qu(x)$ + amount lost
+\\ $qu(x+\delta x)=qu(x)+k(u-v)\delta t \delta x$
+\\ $\frac{du}{dx}=\frac{k}{q}(u-v)$
+\\ Conservation of cars: $\frac{\partial \rho}{\partial t}+\frac{\partial}{\partial x}(\rho v)=0$ where $v$ is given.
+\\$a\frac{\partial u}{\partial x}+b\frac{\partial u}{\partial y}=c \Rightarrow \frac{dx}{ds}=a$,$\frac{dy}{ds}=b$,$\frac{du}{ds}=c$
+\\ Flux = Velocity * density
+\\ Equation of a shock: $\frac{ds}{dt}=\frac{q_1-q_2}{\rho_1-\rho_2}$ where $q_1$ is the flux before
+\subsection*{Projectiles}
+Direction of drag parallel to motion: 
+\\$\underline{L}=\gamma(\dot{x}\underline{i}+\dot{z}\underline{k})$
+\\Direction of lift perpendicular to motion:
+\\
+$\underline{L}=\gamma(-\dot{z}\underline{i}+\dot{x}\underline{k})$
+\\
+\\$\cos x = 1 - \frac{x^2}{2!}+0(x^4)$
+\\$\sin x = x-\frac{x^3}{3!}+O(x^5)$
+\\$e^x=1+x+\frac{x^2}{2!}+O(x^3)$
+
+\subsection*{Non-linear models}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
